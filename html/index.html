@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ONG Ação Solidária - SPA</title>
+    <link rel="stylesheet" href="../css/estilo.css">
+</head>
+<body>
+
+    <header>
+        <img src="../img/logo.png" alt="Logo ONG Ação Solidária">
+        <button id="btn-tema" class="btn-tema">☀️ Tema Claro</button>
+        <button class="menu-toggle" aria-label="Abrir Menu de Navegação">☰</button>
+
+        <nav>
+            <ul>
+                <li><a href="#inicio" data-rota="inicio">Início</a></li>
+                <li class="dropdown">
+                    <a href="#projetos" data-rota="projetos">Projetos ▾</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#projetos" data-rota="projetos">Educação</a></li>
+                        <li><a href="#projetos" data-rota="projetos">Saúde</a></li>
+                        <li><a href="#projetos" data-rota="projetos">Comunitário</a></li>
+                    </ul>
+                </li>
+                <li><a href="#cadastro" data-rota="cadastro">Quero Ajudar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Container onde os templates são injetados -->
+    <main id="app"></main> 
+
+    <footer>
+        <p>&copy; 2026 ONG Ação Solidária. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- A ORDEM DOS SCRIPTS É CRUCIAL: templates.js PRIMEIRO -->
+    <script src="../js/templates.js"></script>
+    <script src="../js/app.js"></script>
+<script src="https://unpkg.com/imask"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</body>
+</html>
