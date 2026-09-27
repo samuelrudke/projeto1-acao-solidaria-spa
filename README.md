@@ -25,3 +25,14 @@ Siga os passos abaixo para executar o projeto no seu computador:
 1. **Clonar o repositório:**
    ```bash
    git clone [https://github.com/samuelrudke/projeto1-acao-solidaria-spa.git](https://github.com/samuelrudke/projeto1-acao-solidaria-spa.git)
+
+## 📌 Instruções de Desenvolvimento e GitFlow
+
+### Criar a funcionalidade de Validação do Formulário de Cadastro (`feature/validacao-cadastro`)
+
+Para desenvolver e testar a funcionalidade de validação do formulário sem afetar o código de produção, siga o passo a passo abaixo:
+
+1. **Garantir que está na branch de desenvolvimento e atualizada:**
+   ```bash
+   git checkout develop
+   git pull origin develop
