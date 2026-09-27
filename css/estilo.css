@@ -1,12 +1,12 @@
 :root {
   --primary-color: #1b4d3e;
   --primary-hover: #143a2e;
-  --secondary-color: #e76f51;
+  --secondary-color: #d9534f; /* Ajustado para rácio de contraste > 4.5:1 */
   --bg-light: #f4f6f8;
   --surface-white: #ffffff;
   --text-dark: #2c3e50;
-  --text-muted: #6c757d;
-  --border-color: #dee2e6;
+  --text-muted: #4a5568; /* Escurecido para melhor legibilidade */
+  --border-color: #cbd5e1;
 
   --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   --font-size-base: 1rem;
@@ -24,6 +24,9 @@
   --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
   --shadow-md: 0 4px 10px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
+
+  /* Cor de destaque para Foco por Teclado (WCAG) */
+  --focus-outline: #2563eb;
 }
 
 * {
@@ -33,11 +36,20 @@
 }
 
 /* ===================================================
-   ESTILOS DO TEMA ESCURO (DARK MODE)
+   ACESSIBILIDADE: INDICADOR VISUAL DE FOCO (TECLADO)
+   =================================================== */
+:focus-visible {
+  outline: 3px solid var(--focus-outline) !important;
+  outline-offset: 3px !important;
+}
+
+/* ===================================================
+   ESTILOS DO TEMA ESCURO / ALTO CONTRASTE (DARK MODE)
    =================================================== */
 body.dark-mode {
   background-color: #121212;
-  color: #e0e0e0;
+  color: #ffffff;
+  --focus-outline: #facc15; /* Amarelo de alto contraste no modo escuro */
 }
 
 body.dark-mode header, 
@@ -62,20 +74,32 @@ body.dark-mode select,
 body.dark-mode textarea {
   background-color: #2b2b2b;
   color: #ffffff;
-  border-color: #444;
+  border-color: #666;
+}
 
-  /* Ajuste de Alertas no Dark Mode */
+/* Ajuste de Alertas no Dark Mode */
 body.dark-mode .alerta-sucesso {
-    background-color: #1e3a29;
-    color: #85e89d;
-    border-color: #28a745;
-}
+  background-color: #0d381e;
+  color: #a3e635;
+  border-color: #4ade80;
 }
 
+body.dark-mode .alerta-erro {
+  background-color: #450a0a;
+  color: #fca5a5;
+  border-color: #f87171;
+}
 
 /* ===================================================
    ESTILOS GERAIS DE ELEMENTOS
    =================================================== */
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -99,7 +123,10 @@ header {
 }
 
 header img {
-  max-height: 50px;
+  header img 
+  max-height: 100px;   
+  width: auto;       
+  object-fit: contain;
 }
 
 nav ul {
@@ -118,11 +145,12 @@ nav a {
   border-radius: 4px;
 }
 
-nav a:hover {
+nav a:hover,
+nav a:focus-visible {
   background-color: var(--primary-hover);
 }
 
-/* Submenu Dropdown */
+/* Submenu Dropdown Acessível via Mouse e Teclado */
 .dropdown {
   position: relative;
 }
@@ -151,7 +179,9 @@ nav a:hover {
   text-decoration: none;
 }
 
-.dropdown:hover .dropdown-menu {
+/* Abre no Hover ou quando focado com a tecla Tab */
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu {
   display: block;
 }
 
@@ -168,7 +198,7 @@ nav a:hover {
 /* Botão de Alternar Tema no Header */
 .btn-tema {
   background-color: transparent;
-  border: 1px solid var(--surface-white);
+  border: 2px solid var(--surface-white);
   color: var(--surface-white);
   padding: var(--space-xs) var(--space-sm);
   border-radius: 20px;
@@ -267,11 +297,6 @@ input, select, textarea {
   font-size: var(--font-size-base);
 }
 
-input:focus, select:focus, textarea:focus {
-  outline: 2px solid var(--primary-color);
-  border-color: var(--primary-color);
-}
-
 input:valid {
   border-color: #28a745;
 }
@@ -307,7 +332,7 @@ button[type="submit"]:active {
 .badge {
   display: inline-block;
   padding: 0.25rem 0.75rem;
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--surface-white);
   background-color: var(--secondary-color);
@@ -326,17 +351,17 @@ button[type="submit"]:active {
 
 .alerta-sucesso {
   background-color: #d4edda;
-  color: #155724;
+  color: #0f5132;
   border-color: #28a745;
 }
 
 .alerta-erro {
   background-color: #f8d7da;
-  color: #721c24;
+  color: #842029;
   border-color: #dc3545;
 }
 
-/* Modal Ajustado e Centralizado */
+/* Modal Centralizado */
 .modal-overlay {
   position: fixed;
   top: 0;
